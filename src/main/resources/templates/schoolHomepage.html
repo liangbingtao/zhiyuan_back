@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+<head>
+    <title>学校主页</title>
+    <meta name="viewport" http-equiv="Content-Type" content="text/html; charset=UTF-8;width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/zhiyuan.css">
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+</head>
+<body>
+<div style="height: 100px;background-color: white">
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8  col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
+        <div style="display: inline-block;margin-top: 20px">
+            <a href="/">
+                <img src="/images/logo2.png" height="80" width="358"/>
+            </a>
+        </div>
+        <div th:if="${session.loginUser != null}" style="text-align: center; width: 80px;height: 40px;display: inline-block;border: 1px solid #ddd;padding: 0px 9px;">
+            <h5 th:text="${session.loginUser.userarea}" style="display: inline-block"></h5>
+            <h5 class="glyphicon glyphicon-map-marker" style="color: #2e6da4; display: inline-block"></h5>
+
+        </div>
+        <div style="display: inline-block;float: right; margin-top: 20px">
+            <a href="/vipUser">
+                <button class="vipbutton"> 加入VIP</button>
+            </a>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="tou">
+        <div class="mynav">
+            <ul>
+                <li><a href="/">首页</a>
+                </li>
+                <li><a>填志愿</a>
+                    <ul id="one" >
+                        <!-- 生成绝对定位的元素，方便修改下拉框的位置 -->
+                        <li><a href="/school">找大学</a></li>
+                        <li><a href="/profession">查专业</a></li>
+                        <li><a href="/scoreline">批次线</a></li>
+                        <li><a href="/simulation">填报推荐</a></li>
+<!--                        <li><a href="/userBasicInformation">一键填报</a></li>-->
+
+                    </ul>
+                </li>
+                <li><a href="#">视频课堂</a>
+                    <ul id="two" >
+                        <!-- 生成绝对定位的元素，方便修改下拉框的位置 -->
+                        <li><a href="#">高校课堂</a></li>
+                        <li><a href="#">专业课堂</a></li>
+
+                    </ul>
+                </li>
+                <li><a href="/highSearch">高级搜索</a>
+                </li>
+                <li th:if="${session.loginUser != null}" >
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        <span  th:text="${session.loginUser.username}+'&nbsp;'+'同学'"></span>
+                    </a>
+                    <ul id="three" >
+                        <li><a href="/front/logout">退出登录</a></li>
+                    </ul>
+                </li>
+                <li th:if="${session.loginUser == null}" >
+                    <a href="/front/login">登录</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12" style=" margin-top: 70px">
+        <div class="panel panel-default">
+            <div class="panel-body" style="text-align: center">
+                <h2 th:text="${schools.name}"></h2>
+                <h4 th:text="${schools.acronym}"></h4>
+                <h5 th:text="'设立时间：'+${schools.foundingyear}+'&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+'所在地区：'+${schools.areaname}+'&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+'类型：'+${schools.type}+'&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+'隶属：'+${schools.department}"></h5>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="row container-fluid">
+            <div class="container-fluid col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="text-align: center">
+                        <h3 class="panel-title">在陕录取分数线</h3>
+                    </div>
+                    <div class="panel-body" style="text-align: center">
+                        <a th:href="@{'/schoolHomepage/'+${scid}(sort=1)}"><button   th:class="${sort==1}?'cardbutton2':'cardbutton'">理科</button></a>
+                        <a th:href="@{'/schoolHomepage/'+${scid}(sort=2)}"><button   th:class="${sort==2}?'cardbutton2':'cardbutton'">文科</button></a>
+                        <div>
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>年份</th>
+                                    <td>招生批次</td>
+                                    <td>最低分</td>
+                                    <td>最低位次</td>
+                                </tr>
+                                </thead>
+                                <tbody th:each="scores:${schoolscores}">
+                                <tr>
+                                    <th scope="row" th:text="${scores.year}"></th>
+                                    <td th:if="${scores.batch == 1}">本一批</td>
+                                    <td th:if="${scores.batch == 2}">本二批</td>
+                                    <td th:text="${scores.minscore}"></td>
+                                    <td th:text="${scores.minrank}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="text-align: center">
+                        <h3 class="panel-title">在陕西招生专业录取分数线</h3>
+                    </div>
+                    <div class="panel-body" style="text-align: center">
+<!--                        <div>-->
+<!--                            <form action="/schoolHomepage/">-->
+<!--                            <select>-->
+<!--                                <option th:name="province" th:each="areas:${area}" th:value="${areas.areaname}" th:text="${areas.areaname}"></option>-->
+<!--                            </select>-->
+<!--                            </form>-->
+<!--                        </div>-->
+                        <div>
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th  width="300">专业</th>
+                                    <td>招生批次</td>
+                                    <td>最高分</td>
+                                    <td>平均分</td>
+                                    <td>最低分</td>
+                                    <td>最低位次</td>
+                                </tr>
+                                </thead>
+                                <tbody th:each="score:${scores}">
+                                <tr>
+                                    <th scope="row" th:text="${score.spname}"></th>
+                                    <td th:text="${score.localBatchName}"></td>
+                                    <td th:text="${score.max == -1}?' ':${score.max}"></td>
+                                    <td th:text="${score.average == -1}?' ':${score.average}"></td>
+                                    <td th:text="${score.min}"></td>
+                                    <td th:text="${score.minSection == -1}?' ':${score.minSection}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="text-align: center">
+                        <h3 class="panel-title">院校相关</h3>
+                    </div>
+                    <div class="panel-body" style="text-align: center">
+                        <h3>院校介绍</h3>
+                        <h5 th:text="${schools.description}"></h5>
+                        <a th:href="${schools.schoolweb}" target="_blank"><h4 >院校官网</h4></a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

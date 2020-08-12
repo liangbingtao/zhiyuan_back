@@ -1,0 +1,341 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+<head>
+    <title>孙教授讲专业</title>
+    <meta name="viewport" content="text/html; charset=UTF-8;"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/zhiyuan.css">
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+    <script type="text/javascript">
+        // function downloadFile(){
+        //     document.demo.action="/GaoKaoQueryReportExcelDownloads";
+        //     document.demo.submit();
+        // }
+        function query() {
+            document.demo.action = "/simulationResult";
+            document.demo.submit();
+        }
+    </script>
+    <style type="text/css">
+        .aspect-ratio {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 45%;
+        }
+
+        .aspect-ratio iframe {
+            position: absolute;
+            width: 65%;
+            height: 90%;
+            left: 18%;
+            top: 0;
+        }
+    </style>
+</head>
+<body style="background-color: #f5f4f8">
+<div style="height: 100px;background-color: white">
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8  col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
+        <div style="display: inline-block;margin-top: 20px">
+            <a href="/">
+                <img src="/images/logo2.png" height="80" width="358"/>
+            </a>
+        </div>
+        <div th:if="${session.loginUser != null}"
+             style="text-align: center; width: 80px;height: 40px;display: inline-block;border: 1px solid #ddd;padding: 0px 9px;">
+            <h5 th:text="${session.loginUser.userarea}" style="display: inline-block"></h5>
+            <h5 class="glyphicon glyphicon-map-marker" style="color: #2e6da4; display: inline-block"></h5>
+
+        </div>
+        <div style="display: inline-block;float: right; margin-top: 20px">
+            <a href="/vipUser">
+                <button class="vipbutton"> 加入VIP</button>
+            </a>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="tou">
+        <div class="mynav">
+            <ul>
+                <li><a href="/">首页</a>
+                </li>
+                <li><a>填志愿</a>
+                    <ul id="one">
+                        <!-- 生成绝对定位的元素，方便修改下拉框的位置 -->
+                        <li><a href="/school">找大学</a></li>
+                        <li><a href="/profession">查专业</a></li>
+                        <li><a href="/scoreline">批次线</a></li>
+                        <li><a href="/simulation">填报推荐</a></li>
+<!--                        <li><a href="/userBasicInformation">一键填报</a></li>-->
+
+                    </ul>
+                </li>
+                <li><a href="#">视频课堂</a>
+                    <ul id="two">
+                        <!-- 生成绝对定位的元素，方便修改下拉框的位置 -->
+                        <li><a href="#">高校课堂</a></li>
+                        <li><a href="#">专业课堂</a></li>
+
+                    </ul>
+                </li>
+                <li><a href="/highSearch">高级搜索</a>
+                </li>
+                <li th:if="${session.loginUser != null}">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        <span th:text="${session.loginUser.username}+'&nbsp;'+'同学'"></span>
+                    </a>
+                    <ul id="three">
+                        <li><a href="/front/logout">退出登录</a></li>
+                    </ul>
+                </li>
+                <li th:if="${session.loginUser == null}">
+                    <a href="/front/login">登录</a>
+                </li>
+            </ul>
+        </div>
+        <!--            <div class="row col-lg-8 col-md-8 col-sm-8 col-xs-8  col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2" style="height: 40px">-->
+        <!--                <div style="width: 130px;display: inline-block;">-->
+        <!--                    <button class="mybutton2" >首页</button>-->
+        <!--                </div>-->
+        <!--                <div style="width: 150px;display: inline-block;">-->
+        <!--                    <button class="mybutton" onmousemove="buttonIn(this)" onmouseout="buttonOut(this)">填志愿</button>-->
+        <!--                </div>-->
+        <!--                <div style="width: 170px;display: inline-block;">-->
+        <!--                    <button class="mybutton" onmousemove="buttonIn(this)" onmouseout="buttonOut(this)">视频课堂</button>-->
+        <!--                </div>-->
+        <!--                <div style="width: 140px;display: inline-block;float: right;">-->
+        <!--                    <div th:if="${session.loginUser != null}" class="dropdown" >-->
+        <!--                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"-->
+        <!--                           aria-expanded="false">-->
+        <!--                            <h4  th:text="${session.loginUser.username}+'同学'" style="color: white;margin-top: 10px"></h4>-->
+        <!--                        </a>-->
+        <!--                        <ul class="dropdown-menu col-lg-3 col-xs-3 col-md-3">-->
+        <!--                            <li><a href="/front/logout">退出登录</a></li>-->
+        <!--                        </ul>-->
+        <!--                    </div>-->
+        <!--                    <div th:if="${session.loginUser == null}">-->
+        <!--                        <button  onclick="window.location.href = '/login'" type="button" class="mybutton" style="margin-right: 20px" onmousemove="buttonIn(this)" onmouseout="buttonOut(this)">-->
+        <!--                            登录-->
+        <!--                        </button>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+    </div>
+    <div>
+        <div class="banner">
+            <div class="img-wrap">
+                <ul>
+                    <li class="item" style="display: block">
+                        <a href="#"><img src="/images/p1.png" alt="" class="lunbo"></a>
+                    </li>
+                    <li class="item">
+                        <a href="#"><img src="/images/p2.png" alt="" class="lunbo"></a>
+                    </li>
+                    <li class="item">
+                        <a href="#"><img src="/images/p3.png" alt="" class="lunbo"></a>
+                    </li>
+                    <li class="item">
+                        <a href="#"><img src="/images/p4.png" alt="" class="lunbo"></a>
+                    </li>
+                    <li class="item">
+                        <a href="#"><img src="/images/p5.png" alt="" class="lunbo"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-btn" style="width:10%;right: 45%;">
+                <ul>
+                    <li class="mybtn"></li>
+                    <li class="mybtn"></li>
+                    <li class="mybtn"></li>
+                    <li class="mybtn"></li>
+                    <li class="mybtn"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="myitem col-lg-8 col-md-8 col-sm-8 col-xs-8  col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2"
+             style="margin-bottom: 20px;-webkit-border-radius: 10px;">
+            <div class="row" style="margin-left: 200px">
+                    <div class=" score-icon ">
+                        <a class="glyphicon glyphicon-home" href="/school" style="text-decoration: none;"></a>
+                        <h4>找学校</h4>
+                    </div>
+                    <div class="score-icon">
+                        <a class="glyphicon glyphicon-th-large" href="/profession" style="text-decoration: none;"></a>
+                        <h4>查专业</h4>
+                    </div>
+                    <div class=" score-icon">
+                        <a class="glyphicon glyphicon-th-list" href="/scoreline" style="text-decoration: none;"></a>
+                        <h4>批次线</h4>
+                    </div>
+                    <!--                <div class=" score-icon">-->
+                    <!--                    <a class="glyphicon glyphicon-list-alt" href="#" style="text-decoration: none;"></a>-->
+                    <!--                    <h4>专业测评</h4>-->
+                    <!--                </div>-->
+                    <div class=" score-icon">
+                        <a class="glyphicon glyphicon-edit" href="/simulation" style="text-decoration: none;"></a>
+                        <h4>填报推荐</h4>
+                    </div>
+                    <!--                <div class="score-icon">-->
+                    <!--                    <a class="glyphicon glyphicon-pencil" href="/userBasicInformation"-->
+                    <!--                       style="text-decoration: none;"></a>-->
+                    <!--                    <h4>一键填报</h4>-->
+                    <!--                </div>-->
+                    <div class="score-icon">
+                        <a class="glyphicon glyphicon-film" href="" style="text-decoration: none;"></a>
+                        <h4>视频讲解</h4>
+                    </div>
+<!--                <div class=" score-icon">-->
+<!--                    <a class="glyphicon glyphicon-user" href="#" style="text-decoration: none;"></a>-->
+<!--                    <h4>志愿专家</h4>-->
+<!--                </div>-->
+            </div>
+        </div>
+        <div class="myitem col-lg-5 col-md-5 col-sm-5 col-xs-5  col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2"
+             style="height: 600px;-webkit-border-radius: 10px;">
+            <div class="page-header">
+                <h2 style="margin-top: -40px">视频课堂 </h2>
+            </div>
+            <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                <div class="aspect-ratio">
+                    <iframe src="//player.bilibili.com/player.html?aid=456314566&bvid=BV195411Y7M8&cid=210433362&page=1&high_quality=1"
+                            scrolling="no" border="0" frameborder="no" framespacing="0"
+                            allowfullscreen="true"></iframe>
+                </div>
+                <div style="position: relative;left: 50%;margin-top: -15px">
+                    <a href="https://www.bilibili.com/video/BV195411Y7M8?p=1" target="_blank"
+                       th:text="更多2020高考报考热门问题讲解+'&gt;'+'&gt;'+'&gt;'"></a>
+                </div>
+
+                <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 " style="text-align: center;margin-top: 10px">
+                    <div class="col-xs-4 col-md-4 col-lg-4 col-sm-4 " th:each="video:${videos.proVideoList}">
+                        <a th:href="@{${video.proweb}}" style="text-decoration: none" th:text="${video.proname}"></a>
+                    </div>
+                    <nav aria-label="Page navigation" style="text-align: center">
+                        <ul class="pagination pagination-sm">
+                            <li th:if="${videos.showFirstPage}">
+                                <a th:href="@{/front/(page=1)}"
+                                   aria-label="FirstPage">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li th:if="${videos.showPrevious}">
+                                <a th:href="@{/front/(page=${videos.page - 1})}"
+                                   aria-label="Previous">
+                                    <span aria-hidden="true">&lt;</span>
+                                </a>
+                            </li>
+
+                            <li th:each="page : ${videos.pages}" th:class="${videos.page == page}? 'active' : ''">
+                                <a th:href="@{/front/(page=${page})}"
+                                   th:text="${page}"></a>
+                            </li>
+
+                            <li th:if="${videos.showNext}">
+                                <a th:href="@{/front/(page=${videos.page + 1})}"
+                                   aria-label="Next">
+                                    <span aria-hidden="true">&gt;</span>
+                                </a>
+                            </li>
+                            <li th:if="${videos.showEndPage}">
+                                <a th:href="@{/front/(page=${videos.totalPage})}"
+                                   aria-label="EndPage">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="myitem col-lg-3 col-md-3 col-sm-3 col-xs-3 "
+             style="margin-left: 1%;height: 600px;width: 24%;-webkit-border-radius: 10px;">
+            <div class="page-header">
+                <h2 style="margin-top: -40px">热门问答</h2>
+            </div>
+
+            <div class="list-group" th:each="question:${gaokaoQuestions}"style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;" >
+                <a th:href="@{'/questionDetail/'+${question.id}}" class="list-group-item">
+                    <h4 class="list-group-item-heading" th:text="${question.question}"style="font-weight: 800"></h4>
+                    <p class="list-group-item-text" th:text="${question.answer}">
+                    </p>
+                </a>
+            </div>
+            <div style="float: right">
+                <a href="/gaokaoQuestion"
+                   th:text="更多热门问答+'&gt;'+'&gt;'+'&gt;'"></a>
+            </div>
+            <!--                <form name="demo"  >-->
+            <!--                    <div class="form-group" style="text-align: center;margin-top: 80px">-->
+            <!--                        <div>-->
+            <!--                            <h4>请输入高考分数</h4>-->
+            <!--                        </div>-->
+            <!--                        <div class="input-group">-->
+            <!--                            <span class="input-group-addon" id="basic-addon1">分数</span>-->
+            <!--                            <input type="number" class="form-control" name="score" placeholder="100~750" οninput="if(value>750)value=750;if(value<100)value=100" aria-describedby="basic-addon1">-->
+            <!--                            <span class="input-group-addon">分</span>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                    <div>-->
+            <!--                        <button class="btn btn-default" onclick="query();" style="margin-left: 40%;">查询提交</button>-->
+            <!--                    </div>-->
+            <!--                    &lt;!&ndash;            <button class="btn btn-default" onclick="downloadFile();">数据导出</button>&ndash;&gt;-->
+            <!--                </form>-->
+        </div>
+        <div class="myitem col-lg-8 col-md-8 col-sm-8 col-xs-8  col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2"
+             style="height: 500px;-webkit-border-radius: 10px;">
+            <div class="page-header">
+                <h2 style="margin-top: -40px">高招动态 </h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="background-color: #504b4b; width: 100%;height: 35px;position: absolute;bottom: -1000px;">
+    <h5 style="text-align: center;color: #868686">陕ICP备19023803号</h5>
+</div>
+
+<script type="text/javascript">
+    var index2 = 0;/*初始化一个变量 指向下标*/
+    //点击点
+    $(".tab-btn .mybtn").click(function () {
+        index2 = $(this).index();//获取点击该元素下标
+        $(this).addClass("active").siblings().removeClass("active");
+        $(".item").eq(index2).fadeIn().siblings().fadeOut();
+    });
+    //点击切换效果
+    $(".lr-tab .right").click(function () {
+        index2++;
+        if (index2 > 4) {
+            index2 = 0;
+        }
+        $(".item").eq(index2).fadeIn().siblings().fadeOut();
+        $(".tab-btn .mybtn").eq(index2).addClass("active").siblings().removeClass("active");
+
+    });
+    $(".lr-tab .left").click(function () {
+        index2--;
+        if (index2 < 0) {
+            index2 = 4;
+        }
+        $(".item").eq(index2).fadeIn().siblings().fadeOut();
+        $(".tab-btn .mybtn").eq(index2).addClass("active").siblings().removeClass("active");
+
+    });
+    var time2 = setInterval(function () {
+        index2++;
+        if (index2 > 4) {
+            index2 = 0;
+        }
+        $(".item").eq(index2).fadeIn().siblings().fadeOut();
+        $(".tab-btn .mybtn").eq(index2).addClass("active").siblings().removeClass("active");
+
+    }, 4000); //定时器 重复
+</script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+<head>
+    <title>考生个人基本信息</title>
+    <meta name="viewport" http-equiv="Content-Type" content="text/html; charset=UTF-8;width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/zhiyuan.css">
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var msg =data["msg"];
+            alert(msg);
+        });
+
+    </script>
+</head>
+<body style="line-height: 0px;">
+<div style="height: 100px;background-color: white">
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8  col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
+        <div style="display: inline-block;margin-top: 20px">
+            <a href="/">
+                <img src="/images/logo2.png" height="80" width="358"/>
+            </a>
+        </div>
+        <div th:if="${session.loginUser != null}" style="text-align: center; width: 80px;height: 40px;display: inline-block;border: 1px solid #ddd;padding: 0px 9px;">
+            <h5 th:text="${session.loginUser.userarea}" style="display: inline-block"></h5>
+            <h5 class="glyphicon glyphicon-map-marker" style="color: #2e6da4; display: inline-block"></h5>
+
+        </div>
+        <div style="display: inline-block;float: right; margin-top: 20px">
+            <a href="/vipUser">
+                <button class="vipbutton"> 加入VIP</button>
+            </a>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="tou">
+        <div class="mynav">
+            <ul>
+                <li><a href="/">首页</a>
+                </li>
+                <li><a>填志愿</a>
+                    <ul id="one" >
+                        <!-- 生成绝对定位的元素，方便修改下拉框的位置 -->
+                        <li><a href="/school">找大学</a></li>
+                        <li><a href="/profession">查专业</a></li>
+                        <li><a href="/scoreline">批次线</a></li>
+                        <li><a href="/simulation">填报推荐</a></li>
+<!--                        <li><a href="/userBasicInformation">一键填报</a></li>-->
+
+                    </ul>
+                </li>
+                <li><a href="#">视频课堂</a>
+                    <ul id="two" >
+                        <!-- 生成绝对定位的元素，方便修改下拉框的位置 -->
+                        <li><a href="#">高校课堂</a></li>
+                        <li><a href="#">专业课堂</a></li>
+
+                    </ul>
+                </li>
+                <li><a href="/highSearch">高级搜索</a>
+                </li>
+                <li th:if="${session.loginUser != null}" >
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        <span  th:text="${session.loginUser.username}+'&nbsp;'+'同学'"></span>
+                    </a>
+                    <ul id="three" >
+                        <li><a href="/front/logout">退出登录</a></li>
+                    </ul>
+                </li>
+                <li th:if="${session.loginUser == null}" >
+                    <a href="/front/login">登录</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+<div class="container" style="text-align: center">
+    <div>
+        <span>
+            <h3>请完善个人信息</h3>
+            <h4 style="color: red">(请注意！带*号为必填项，本页面数据提交后不可修改，请认真填写，确认无误后再提交！！！)</h4>
+        </span>
+    </div>
+    <form class="form-inline" action="/adduserBasicInformation" method="post" >
+        <div class="form-group">
+            <div class="input-group-addon">请输入考生姓名</div>
+            <div style="color: red"><input type="text" id="userRealname" class="form-control" name="userRealname" placeholder="请输入考生姓名">*</div>
+        </div>
+        <div class="form-group">
+            <div class="input-group-addon">请选择考生性别</div>
+            <div style="color: red">
+                <select class="form-control" id="userGender" name="userGender" th:selected="男">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>*
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group-addon">请输入微信号</div>
+            <div style="color: red"><input type="text" class="form-control" id="userWechat" name="userWechat" placeholder="请输入微信号">*</div>
+        </div>
+        <div class="form-group">
+            <div class="input-group-addon">请输入考生高考分数</div>
+            <div style="color: red"><input type="number" class="form-control" id="userScore" name="userScore" placeholder="请输入考生高考分数">*</div>
+        </div>
+        <div class="form-group">
+            <div class="input-group-addon">请输入考生位次</div>
+            <div style="color: red"><input type="number" class="form-control" id="userRank" name="userRank" placeholder="请输入考生位次">*</div>
+        </div>
+        <div style="margin-top: 30px">
+            <h3 th:text="${msg}" style="color: red"></h3>
+            <button type="submit" class="btn btn-primary" >确认考生基本信息并提交</button>
+        </div>
+
+
+    </form>
+</div>
+</div>
+
+</body>
+</html>

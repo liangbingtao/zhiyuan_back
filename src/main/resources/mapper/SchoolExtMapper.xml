@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanelee.zhiyuan.Mapper.SchoolExtMapper">
+  <resultMap id="BaseResultMap" type="com.sanelee.zhiyuan.Model.School">
+    <id column="scid" jdbcType="INTEGER" property="scid" />
+    <result column="rank" jdbcType="INTEGER" property="rank" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="areaname" jdbcType="VARCHAR" property="areaname" />
+    <result column="areaid" jdbcType="INTEGER" property="areaid" />
+    <result column="acronym" jdbcType="VARCHAR" property="acronym" />
+    <result column="region" jdbcType="VARCHAR" property="region" />
+    <result column="reid" jdbcType="INTEGER" property="reid" />
+    <result column="usedname" jdbcType="VARCHAR" property="usedname" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="foundingYear" jdbcType="INTEGER" property="foundingyear" />
+    <result column="department" jdbcType="VARCHAR" property="department" />
+    <result column="iscombine" jdbcType="VARCHAR" property="iscombine" />
+    <result column="is985" jdbcType="INTEGER" property="is985" />
+    <result column="is211" jdbcType="INTEGER" property="is211" />
+    <result column="isDoubleFirstClass" jdbcType="VARCHAR" property="isdoublefirstclass" />
+    <result column="firstClassNum" jdbcType="INTEGER" property="firstclassnum" />
+    <result column="facultyNum" jdbcType="INTEGER" property="facultynum" />
+    <result column="academicianNum" jdbcType="INTEGER" property="academiciannum" />
+    <result column="changjiangScholarNum" jdbcType="INTEGER" property="changjiangscholarnum" />
+    <result column="teachersNum" jdbcType="INTEGER" property="teachersnum" />
+    <result column="undergraProNum" jdbcType="INTEGER" property="undergrapronum" />
+    <result column="postgraProNum" jdbcType="INTEGER" property="postgrapronum" />
+    <result column="doctorProNum" jdbcType="INTEGER" property="doctorpronum" />
+    <result column="mainLabNum" jdbcType="INTEGER" property="mainlabnum" />
+    <result column="undergraEnrollNum" jdbcType="INTEGER" property="undergraenrollnum" />
+    <result column="postgraEnrollNum" jdbcType="INTEGER" property="postgraenrollnum" />
+    <result column="schoolWeb" jdbcType="VARCHAR" property="schoolweb" />
+  </resultMap>
+  <sql id="Base_Column_List1">
+    areaname,areaid
+  </sql>
+  <sql id="Base_Column_List2">
+    type
+  </sql>
+  <select id="selectAreaByExample" parameterType="com.sanelee.zhiyuan.Model.SchoolExample" resultMap="BaseResultMap">
+
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List1" />
+    from school
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectTypeByExample" parameterType="com.sanelee.zhiyuan.Model.SchoolExample" resultMap="BaseResultMap">
+
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List2" />
+    from school
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="countBySomething" parameterType="com.sanelee.zhiyuan.DTO.SchoolQueryDTO" resultType="java.lang.Integer">
+    select count(*) from school
+    <where>
+<!--      <if test='search != "null" and search !=""'>-->
+<!--        or school.name regexp #{search}-->
+<!--      </if>-->
+<!--      <if test='areaid != "null" and areaid !=""'>-->
+<!--        or areaid=#{areaid}-->
+<!--      </if>-->
+<!--      <if test='type != "null" and type !=""'>-->
+<!--        or school.type=#{type}-->
+<!--      </if>-->
+<!--      <if test='is211 != "null" and is211 !=""'>-->
+<!--        or is211=#{is211}-->
+<!--      </if>-->
+<!--      <if test='is985 != "null" and is985 !=""'>-->
+<!--        or is985=#{is985}-->
+<!--      </if>-->
+<!--      <if test='isdoublefirstclass != "null" and isdoublefirstclass !=""'>-->
+<!--        or isdoublefirstclass=#{isdoublefirstclass}-->
+<!--      </if>-->
+
+        <if test='search != "null" and search !=""'>
+            or school.name regexp #{search}
+        </if>
+      <if test="areaid != null and areaid !='-1'">
+        or areaid=#{areaid}
+      </if>
+        <if test='type != "null" and type !=""'>
+            or school.type=#{type}
+        </if>
+      <if test="is211 != null and is211 !='-1'">
+        or is211=#{is211}
+      </if>
+      <if test="is985 != null and is985 !='-1'">
+        or is985=#{is985}
+      </if>
+      <if test="isdoublefirstclass != null and isdoublefirstclass !='-1'">
+        or isdoublefirstclass=#{isdoublefirstclass}
+      </if>
+    </where>
+  </select>
+
+  <select id="selectBySomething" parameterType="com.sanelee.zhiyuan.DTO.SchoolQueryDTO" resultMap="BaseResultMap">
+    select * from school
+    <where>
+
+<!--      <if test='search != "null" and search !=""'>-->
+<!--        or school.name regexp #{search}-->
+<!--      </if>-->
+<!--      <if test='areaid != "null" and areaid !=""'>-->
+<!--        or areaid=#{areaid}-->
+<!--      </if>-->
+<!--      <if test='type != "null" and type !=""'>-->
+<!--        or school.type=#{type}-->
+<!--      </if>-->
+<!--      <if test='is211 != "null" and is211 !=""'>-->
+<!--        or is211=#{is211}-->
+<!--      </if>-->
+<!--      <if test='is985 != "null" and is985 !=""'>-->
+<!--        or is985=#{is985}-->
+<!--      </if>-->
+<!--      <if test='isdoublefirstclass != "null" and isdoublefirstclass !=""'>-->
+<!--        or isdoublefirstclass=#{isdoublefirstclass}-->
+<!--      </if>-->
+
+        <if test='search != "null" and search !=""'>
+            or school.name regexp #{search}
+        </if>
+      <if test="areaid != null and areaid !='-1'">
+        or areaid=#{areaid}
+      </if>
+        <if test='type != "null" and type !=""'>
+            or school.type=#{type}
+        </if>
+      <if test="is211 != null and is211 !='-1'">
+        or is211=#{is211}
+      </if>
+      <if test="is985 != null and is985 !='-1'">
+        or is985=#{is985}
+      </if>
+      <if test="isdoublefirstclass != null and isdoublefirstclass !='-1'">
+        or isdoublefirstclass=#{isdoublefirstclass}
+      </if>
+    </where>
+    order by school.rank limit #{page},#{size}
+  </select>
+</mapper>

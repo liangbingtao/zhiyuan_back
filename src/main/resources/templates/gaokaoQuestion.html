@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>热门问答</title>
+    <meta name="viewport" http-equiv="Content-Type"
+          content="text/html; charset=UTF-8;width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/zhiyuan.css">
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+</head>
+<body>
+<div style="height: 100px;background-color: white">
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8  col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
+        <div style="display: inline-block;margin-top: 20px">
+            <a href="/">
+                <img src="/images/logo2.png" height="80" width="358"/>
+            </a>
+        </div>
+        <div th:if="${session.loginUser != null}" style="text-align: center; width: 80px;height: 40px;display: inline-block;border: 1px solid #ddd;padding: 0px 9px;">
+            <h5 th:text="${session.loginUser.userarea}" style="display: inline-block"></h5>
+            <h5 class="glyphicon glyphicon-map-marker" style="color: #2e6da4; display: inline-block"></h5>
+
+        </div>
+        <div style="display: inline-block;float: right; margin-top: 20px">
+            <a href="/vipUser">
+                <button class="vipbutton"> 加入VIP</button>
+            </a>
+        </div>
+    </div>
+</div>
+<div  style="text-align: center">
+    <div class="tou">
+        <div class="mynav">
+            <ul>
+                <li><a href="/">首页</a>
+                </li>
+                <li><a>填志愿</a>
+                    <ul id="one" >
+                        <!-- 生成绝对定位的元素，方便修改下拉框的位置 -->
+                        <li><a href="/school">找大学</a></li>
+                        <li><a href="/profession">查专业</a></li>
+                        <li><a href="/scoreline">批次线</a></li>
+                        <li><a href="/simulation">填报推荐</a></li>
+<!--                        <li><a href="/userBasicInformation">一键填报</a></li>-->
+
+                    </ul>
+                </li>
+                <li><a href="#">视频课堂</a>
+                    <ul id="two" >
+                        <!-- 生成绝对定位的元素，方便修改下拉框的位置 -->
+                        <li><a href="#">高校课堂</a></li>
+                        <li><a href="#">专业课堂</a></li>
+
+                    </ul>
+                </li>
+                <li><a href="/highSearch">高级搜索</a>
+                </li>
+                <li th:if="${session.loginUser != null}" >
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        <span  th:text="${session.loginUser.username}+'&nbsp;'+'同学'"></span>
+                    </a>
+                    <ul id="three" >
+                        <li><a href="/front/logout">退出登录</a></li>
+                    </ul>
+                </li>
+                <li th:if="${session.loginUser == null}" >
+                    <a href="/front/login">登录</a>
+                </li>
+            </ul>
+        </div>
+        <div class="myitem col-lg-8 col-md-8 col-sm-8 col-xs-8  col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2" style="background-color: #e2e2e2;margin-bottom: 20px;-webkit-border-radius: 10px;">
+            <div class="row" style="margin-left: 200px">
+                <div class=" score-icon ">
+                    <a class="glyphicon glyphicon-home" href="/school" style="text-decoration: none;"></a>
+                    <h4>找学校</h4>
+                </div>
+                <div class="score-icon">
+                    <a class="glyphicon glyphicon-th-large" href="/profession" style="text-decoration: none;" ></a>
+                    <h4>查专业</h4>
+                </div>
+                <div class=" score-icon">
+                    <a class="glyphicon glyphicon-th-list" href="/scoreline" style="text-decoration: none;"></a>
+                    <h4>批次线</h4>
+                </div>
+<!--                <div class=" score-icon">-->
+<!--                    <a class="glyphicon glyphicon-list-alt" href="#" style="text-decoration: none;"></a>-->
+<!--                    <h4>专业测评</h4>-->
+<!--                </div>-->
+                <div class=" score-icon">
+                    <a class="glyphicon glyphicon-edit" href="/simulation" style="text-decoration: none;"></a>
+                    <h4>填报推荐</h4>
+                </div>
+<!--                <div class="score-icon">-->
+<!--                    <a class="glyphicon glyphicon-pencil" href="/userBasicInformation" style="text-decoration: none;"></a>-->
+<!--                    <h4>一键填报</h4>-->
+<!--                </div>-->
+                <div class="score-icon">
+                    <a class="glyphicon glyphicon-film" href="" style="text-decoration: none;"></a>
+                    <h4>视频讲解</h4>
+                </div>
+<!--                <div class=" score-icon">-->
+<!--                    <a class="glyphicon glyphicon-user"  href="#" style="text-decoration: none;"></a>-->
+<!--                    <h4>志愿专家</h4>-->
+<!--                </div>-->
+            </div>
+        </div>
+    </div>
+    <div >
+        <div class="col-md-8 col-md-offset-2" style="margin-bottom: 50px;">
+            <div th:each="type:${questionType}">
+                <div class="panel panel-primary" >
+                    <div class="panel-heading" th:text="${type.type}" style="font-size: large;text-align: left"></div>
+                    <div class="list-group" th:each="question:${allquestion}">
+                        <a th:href="@{'/questionDetail/'+${question.id}}" class="list-group-item"
+                           th:if="${question.type==type.type}" th:text="${question.question}" style="text-align: left"></a>
+                    </div>
+                </div>
+
+
+
+<!--                <nav aria-label="Page navigation" style="text-align: center">-->
+<!--                    <ul class="pagination pagination-sm">-->
+<!--                        <li th:if="${questionList.showFirstPage}">-->
+<!--                            <a th:href="@{/gaokaoQuestion/(page=1)}"-->
+<!--                               aria-label="FirstPage">-->
+<!--                                <span aria-hidden="true">&laquo;</span>-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li th:if="${questionList.showPrevious}">-->
+<!--                            <a th:href="@{/gaokaoQuestion/(page=${questionList.page - 1})}"-->
+<!--                               aria-label="Previous">-->
+<!--                                <span aria-hidden="true">&lt;</span>-->
+<!--                            </a>-->
+<!--                        </li>-->
+
+<!--                        <li th:each="page : ${questionList.pages}" th:class="${questionList.page == page}? 'active' : ''">-->
+<!--                            <a th:href="@{/gaokaoQuestion/(page=${page})}"-->
+<!--                               th:text="${page}"></a>-->
+<!--                        </li>-->
+
+<!--                        <li th:if="${questionList.showNext}">-->
+<!--                            <a th:href="@{/gaokaoQuestion/(page=${questionList.page + 1})}"-->
+<!--                               aria-label="Next">-->
+<!--                                <span aria-hidden="true">&gt;</span>-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li th:if="${questionList.showEndPage}">-->
+<!--                            <a th:href="@{/gaokaoQuestion/(page=${questionList.totalPage})}"-->
+<!--                               aria-label="EndPage">-->
+<!--                                <span aria-hidden="true">&raquo;</span>-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </nav>-->
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

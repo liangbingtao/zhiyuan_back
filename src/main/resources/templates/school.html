@@ -1,0 +1,251 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+<head>
+    <title>查学校</title>
+    <meta name="viewport" http-equiv="Content-Type" content="text/html; charset=UTF-8;width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/zhiyuan.css">
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+</head>
+<body>
+<div style="height: 100px;background-color: white">
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8  col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
+        <div style="display: inline-block;margin-top: 20px">
+            <a href="/">
+                <img src="/images/logo2.png" height="80" width="358"/>
+            </a>
+        </div>
+        <div th:if="${session.loginUser != null}" style="text-align: center; width: 80px;height: 40px;display: inline-block;border: 1px solid #ddd;padding: 0px 9px;">
+            <h5 th:text="${session.loginUser.userarea}" style="display: inline-block"></h5>
+            <h5 class="glyphicon glyphicon-map-marker" style="color: #2e6da4; display: inline-block"></h5>
+
+        </div>
+        <div style="display: inline-block;float: right; margin-top: 20px">
+            <a href="/vipUser">
+                <button class="vipbutton"> 加入VIP</button>
+            </a>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="tou">
+        <div class="mynav">
+            <ul>
+                <li><a href="/">首页</a>
+                </li>
+                <li><a>填志愿</a>
+                    <ul id="one" >
+                        <!-- 生成绝对定位的元素，方便修改下拉框的位置 -->
+                        <li><a href="/school">找大学</a></li>
+                        <li><a href="/profession">查专业</a></li>
+                        <li><a href="/scoreline">批次线</a></li>
+                        <li><a href="/simulation">填报推荐</a></li>
+<!--                        <li><a href="/userBasicInformation">一键填报</a></li>-->
+
+                    </ul>
+                </li>
+                <li><a href="#">视频课堂</a>
+                    <ul id="two" >
+                        <!-- 生成绝对定位的元素，方便修改下拉框的位置 -->
+                        <li><a href="#">高校课堂</a></li>
+                        <li><a href="#">专业课堂</a></li>
+
+                    </ul>
+                </li>
+                <li><a href="/highSearch">高级搜索</a>
+                </li>
+                <li th:if="${session.loginUser != null}" >
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        <span  th:text="${session.loginUser.username}+'&nbsp;'+'同学'"></span>
+                    </a>
+                    <ul id="three" >
+                        <li><a href="/front/logout">退出登录</a></li>
+                    </ul>
+                </li>
+                <li th:if="${session.loginUser == null}" >
+                    <a href="/front/login">登录</a>
+                </li>
+            </ul>
+        </div>
+        <div class="myitem col-lg-8 col-md-8 col-sm-8 col-xs-8  col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2" style="background-color: #e2e2e2;margin-bottom: 20px;-webkit-border-radius: 10px;">
+            <div class="row" style="margin-left: 200px">
+                <div class=" score-icon ">
+                    <a class="glyphicon glyphicon-home" href="/school" style="text-decoration: none;"></a>
+                    <h4>找学校</h4>
+                </div>
+                <div class="score-icon">
+                    <a class="glyphicon glyphicon-th-large" href="/profession" style="text-decoration: none;" ></a>
+                    <h4>查专业</h4>
+                </div>
+                <div class=" score-icon">
+                    <a class="glyphicon glyphicon-th-list" href="/scoreline" style="text-decoration: none;"></a>
+                    <h4>批次线</h4>
+                </div>
+<!--                <div class=" score-icon">-->
+<!--                    <a class="glyphicon glyphicon-list-alt" href="#" style="text-decoration: none;"></a>-->
+<!--                    <h4>专业测评</h4>-->
+<!--                </div>-->
+                <div class=" score-icon">
+                    <a class="glyphicon glyphicon-edit" href="/simulation" style="text-decoration: none;"></a>
+                    <h4>填报推荐</h4>
+                </div>
+<!--                <div class="score-icon">-->
+<!--                    <a class="glyphicon glyphicon-pencil" href="/userBasicInformation" style="text-decoration: none;"></a>-->
+<!--                    <h4>一键填报</h4>-->
+<!--                </div>-->
+                <div class="score-icon">
+                    <a class="glyphicon glyphicon-film" href="" style="text-decoration: none;"></a>
+                    <h4>视频讲解</h4>
+                </div>
+<!--                <div class=" score-icon">-->
+<!--                    <a class="glyphicon glyphicon-user"  href="#" style="text-decoration: none;"></a>-->
+<!--                    <h4>志愿专家</h4>-->
+<!--                </div>-->
+            </div>
+        </div>
+    </div>
+    <div class="schoolSearchList">
+        <div class="schoolSearch col-lg-6 col-lg-offset-2">
+            <form action="/school" method="get">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="search" id="searchBox" placeholder="输入院校名称">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default"  type="submit">搜 索</button>
+                    </span>
+                </div>
+            </form>
+            <div class="schoolList" >
+                <div class="container-fluid">
+                    <ul class="list-group" id="dataSet" th:each="school:${pagination.schools}">
+                        <mediali class="media" style="height: 80px">
+                            <a th:href="@{'/schoolHomepage/'+${school.scid}}" style="text-decoration: none;">
+                                <div class="media-body" >
+                                    <h4 class="-heading" style="color: #333333" th:text="${school.name}"></h4>
+                                </div>
+                            </a>
+                            <ol class="schooltitle">
+                                <li class="active" th:text="${school.type}"></li>
+                                <li class="active" th:text="${school.department}"></li>
+                                <li class="active" th:text="${school.areaname}"></li>
+                            </ol>
+                            <ol class="schooltitle">
+                                <span class="label label-primary" th:if="${school.is985 == 985}">985</span>
+                                <span class="label label-primary" th:if="${school.is211 == 211}">211</span>
+                                <span class="label label-primary" th:if="${school.isdoublefirstclass == 1}">双一流</span>
+                            </ol>
+                        </mediali>
+                    </ul>
+                    <div style="text-align: center">
+                        <nav aria-label="Page navigation" style="color: #0f0f0f">
+                            <ul class="pagination">
+
+                                <li th:if="${pagination.showFirstPage}">
+                                    <a th:href="@{/school(page=1,search=${search},areaid=${areaid},type=${type},is211=${is211},is985=${is985},isdoublefirstclass=${isdoublefirstclass})}" aria-label="Previous">
+                                        <span aria-hidden="true">&lt;&lt;</span>
+                                    </a>
+                                </li>
+                                <li th:if="${pagination.showPrevious}">
+                                    <a th:href="@{/school(page=${pagination.page - 1},search=${search},areaid=${areaid},type=${type},is211=${is211},is985=${is985},isdoublefirstclass=${isdoublefirstclass})}" aria-label="Previous">
+                                        <span aria-hidden="true">&lt;</span>
+                                    </a>
+                                </li>
+
+                                <li th:each="page:${pagination.pages}" th:class="${pagination.page == page}?'active':''">
+                                    <a th:href="@{/school(page=${page},search=${search},areaid=${areaid},type=${type},is211=${is211},is985=${is985},isdoublefirstclass=${isdoublefirstclass})}" th:text="${page}" >
+
+                                    </a>
+                                </li>
+                                <li th:if="${pagination.showNext}">
+                                    <a th:href="@{/school(page=${pagination.page + 1},search=${search},areaid=${areaid},type=${type},is211=${is211},is985=${is985},isdoublefirstclass=${isdoublefirstclass})}" aria-label="Next">
+                                        <span aria-hidden="true">&gt;</span>
+                                    </a>
+                                </li>
+                                <li th:if="${pagination.showEndPage}">
+                                    <a th:href="@{/school(page=${pagination.totalPage},search=${search},areaid=${areaid},type=${type},is211=${is211},is985=${is985},isdoublefirstclass=${isdoublefirstclass})}" aria-label="Next">
+                                        <span aria-hidden="true">&gt;&gt;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="schoolAreaCard col-lg-2 ">
+                <div class="cadrborder">
+                    <div style="margin: 5px">
+                        <form action="/school" method="get" >
+                            <ul class="nav nav-pills" style="padding-left: 3px;">
+                                <li  role="presentation">
+                                    <button class="cardbutton" name="areaid"  value="" type="submit" style="background-color: #498364">不限</button>
+                                </li>
+                                <li  role="presentation" >
+                                    <button th:class="${is985 == 985}?'cardbutton2':'cardbutton'" name="is985"  value="985" type="submit" >985</button>
+                                </li>
+                                <li  role="presentation" >
+                                    <button th:class="${is211 == 211}?'cardbutton2':'cardbutton'" name="is211"  value="211" type="submit" >211</button>
+                                </li>
+                                <li  role="presentation" >
+                                    <button th:class="${isdoublefirstclass == 1}?'cardbutton2':'cardbutton'" name="isdoublefirstclass"  value="1" type="submit" >双一流</button>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+                <div class="cadrborder">
+                    <div style="margin: 5px">
+                        <form action="/school" method="get" id="typeform">
+                        <ul class="nav nav-pills" style="padding-left: 3px;">
+                            <li  role="presentation">
+                                <button class="cardbutton" name="areaid"  value="" type="submit" style="background-color: #498364">不限</button>
+                            </li>
+                            <li role="presentation" th:each="types:${typeList}">
+                                <button name="type" type="submit" th:text="${types.type}" th:value="${types.type}" th:class="${types.type == type}?'cardbutton2':'cardbutton'"></button>
+                            </li>
+                        </ul>
+                        </form>
+                    </div>
+                </div>
+                <div class="cadrborder">
+                    <div style="margin: 5px">
+                        <form action="/school" method="get" id="areaidform">
+                            <ul class="nav nav-pills" style="padding-left: 3px;">
+                                <li  role="presentation">
+                                    <button class="cardbutton" name="areaid"  value="" type="submit" style="background-color: #498364">不限</button>
+                                </li>
+                                <li  role="presentation" th:each="areas:${area}" >
+                                    <button  name="areaid" type="submit" th:text="${areas.areaname}" th:value="${areas.areaid}" th:class="${areas.areaid == areaid}?'cardbutton2':'cardbutton'"></button>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+<!--<script>-->
+<!--    $(function(){-->
+<!--        $("#searchBox").keyup(function () {-->
+<!--            var value = $(this).val();-->
+<!--            $("#dataSet li").each(function () {-->
+<!--                $(this).hide();-->
+<!--                if ($(this).text().indexOf($.trim(value)) >= 0) {-->
+<!--                    $(this).show();-->
+<!--                }-->
+<!--            });-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
+</body>
+</html>
