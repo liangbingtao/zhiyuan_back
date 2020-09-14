@@ -25,52 +25,30 @@
   <select id="countBySomething" parameterType="com.sanelee.zhiyuan.DTO.ProfessionQueryDTO" resultType="java.lang.Integer">
     select count(*) from profession
     <where>
-      <if test='search != "null" and search !=""'>
+      <if test="search != null and search !=''">
         or proname regexp #{search}
       </if>
-      <if test='major != "null" and major !=""'>
+      <if test="major != null and major !=''">
         or major =#{major}
       </if>
-      <if test='subject != "null" and subject !=""'>
+      <if test="subject != null and subject !=''">
         or profession.subject = #{subject}
       </if>
-
-
-<!--      <if test='search != "null" and search !=""'>-->
-<!--        or proname regexp #{search}-->
-<!--      </if>-->
-<!--      <if test='major != "null" and major !=""'>-->
-<!--        or major =#{major}-->
-<!--      </if>-->
-<!--      <if test='subject != "null" and subject !=""'>-->
-<!--        or profession.subject = #{subject}-->
-<!--      </if>-->
     </where>
   </select>
   <select id="selectBySomething" parameterType="com.sanelee.zhiyuan.DTO.ProfessionQueryDTO" resultMap="BaseResultMap">
     select * from profession
     <where>
-<!--      <if test="search != null and search !=''">-->
-<!--        or proname regexp #{search}-->
-<!--      </if>-->
-<!--      <if test="major != null and major !=''">-->
-<!--        or major = #{major}-->
-<!--      </if>-->
-<!--      <if test="subject != null and subject !=''">-->
-<!--        or profession.subject=#{subject}-->
-<!--      </if>-->
-
-      <if test='search != "null" and search !=""'>
+      <if test="search != null and search !=''">
         or proname regexp #{search}
       </if>
-      <if test='major != "null" and major !=""'>
-        or major =#{major}
+      <if test="major != null and major !=''">
+        or major = #{major}
       </if>
-      <if test='subject != "null" and subject !=""'>
-        or profession.subject = #{subject}
+      <if test="subject != null and subject !=''">
+        or profession.subject=#{subject}
       </if>
     </where>
-
     order by pid limit #{page},#{size}
   </select>
   <select id="selectSubjectByExample" parameterType="com.sanelee.zhiyuan.Model.ProfessionExample" resultMap="BaseResultMap">
@@ -89,10 +67,7 @@
 
     select distinct subject,major from profession
     <where>
-<!--      <if test="major != null and major != '' ">-->
-<!--        or major=#{major}-->
-<!--      </if>-->
-      <if test='major != "null" and major != "" '>
+      <if test="major != null and major != '' ">
         or major=#{major}
       </if>
     </where>

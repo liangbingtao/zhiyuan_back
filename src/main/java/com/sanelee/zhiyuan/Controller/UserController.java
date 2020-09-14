@@ -83,6 +83,7 @@ public class UserController {
             return "userBasicInformation";
         }
     }
+
     @GetMapping("/vipUser")
     public String vipUser(){
         return "vipUser";

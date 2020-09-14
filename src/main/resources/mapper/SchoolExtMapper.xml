@@ -83,24 +83,24 @@
 <!--        or isdoublefirstclass=#{isdoublefirstclass}-->
 <!--      </if>-->
 
-        <if test='search != "null" and search !=""'>
-            or school.name regexp #{search}
+        <if test="search != null and search != ''">
+            or name regexp #{search}
         </if>
-      <if test="areaid != null and areaid !='-1'">
-        or areaid=#{areaid}
-      </if>
-        <if test='type != "null" and type !=""'>
-            or school.type=#{type}
+        <if test="areaid != null and areaid != ''">
+            or areaid = #{areaid}
         </if>
-      <if test="is211 != null and is211 !='-1'">
-        or is211=#{is211}
-      </if>
-      <if test="is985 != null and is985 !='-1'">
-        or is985=#{is985}
-      </if>
-      <if test="isdoublefirstclass != null and isdoublefirstclass !='-1'">
-        or isdoublefirstclass=#{isdoublefirstclass}
-      </if>
+        <if test="type != null and type != ''">
+            or school.type = #{type}
+        </if>
+        <if test="is211 != null and is211 != ''">
+            or is211 = #{is211}
+        </if>
+        <if test="is985 != null and is985 !=''">
+            or is985=#{is985}
+        </if>
+        <if test="isdoublefirstclass != null and isdoublefirstclass !=''">
+            or isdoublefirstclass=#{isdoublefirstclass}
+        </if>
     </where>
   </select>
 
@@ -127,24 +127,24 @@
 <!--        or isdoublefirstclass=#{isdoublefirstclass}-->
 <!--      </if>-->
 
-        <if test='search != "null" and search !=""'>
+        <if test="search != null and search !=''">
             or school.name regexp #{search}
         </if>
-      <if test="areaid != null and areaid !='-1'">
-        or areaid=#{areaid}
-      </if>
-        <if test='type != "null" and type !=""'>
+        <if test="areaid != null and areaid !=''">
+            or areaid=#{areaid}
+        </if>
+        <if test="type != null and type !=''">
             or school.type=#{type}
         </if>
-      <if test="is211 != null and is211 !='-1'">
-        or is211=#{is211}
-      </if>
-      <if test="is985 != null and is985 !='-1'">
-        or is985=#{is985}
-      </if>
-      <if test="isdoublefirstclass != null and isdoublefirstclass !='-1'">
-        or isdoublefirstclass=#{isdoublefirstclass}
-      </if>
+        <if test="is211 != null and is211 !=''">
+            or is211=#{is211}
+        </if>
+        <if test="is985 != null and is985 !=''">
+            or is985=#{is985}
+        </if>
+        <if test="isdoublefirstclass != null and isdoublefirstclass !=''">
+            or isdoublefirstclass=#{isdoublefirstclass}
+        </if>
     </where>
     order by school.rank limit #{page},#{size}
   </select>
