@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sanelee.zhiyuan.Mapper.GaoKaoQuestionMapper">
+
+    <select id="findLatestQuestions" resultType="com.sanelee.zhiyuan.Model.GaoKaoQuestion">
+        select *
+        from gaokao_question
+        order by id DESC
+        limit 0,5
+    </select>
+
+    <select id="findQuestionById" resultType="com.sanelee.zhiyuan.Model.GaoKaoQuestion">
+        select *
+        from gaokao_question
+        where id = #{id}
+    </select>
+
+    <select id="findQuestionType" resultType="com.sanelee.zhiyuan.Model.GaoKaoQuestion">
+        select distinct type
+        from gaokao_question
+    </select>
+
+    <select id="findAllQuestions" resultType="com.sanelee.zhiyuan.Model.GaoKaoQuestion">
+        select *
+        from gaokao_question
+        order by id
+    </select>
+
+    <!--    <select id="countQuestions" resultType="Integer">-->
+    <!--        select count(1)-->
+    <!--        from gaokao_question-->
+    <!--    </select>-->
+
+    <!--    <select id="findQuestions" resultType="com.sanelee.zhiyuan.Model.GaoKaoQuestion">-->
+    <!--        select *-->
+    <!--        from gaokao_question-->
+    <!--        limit #{offset},#{size}-->
+    <!--    </select>-->
+</mapper>

@@ -1,8 +1,11 @@
 package com.sanelee.zhiyuan.Controller;
 
-import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSON;
+import com.sanelee.zhiyuan.Enums.ResultEnum;
 import com.sanelee.zhiyuan.Mapper.GaoKaoQuestionMapper;
 import com.sanelee.zhiyuan.Model.GaoKaoQuestion;
+import com.sanelee.zhiyuan.Model.Result;
+import com.sanelee.zhiyuan.Util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,27 +25,35 @@ public class GaoKaoQuestionController {
     //查询所有高考问题，和所有问题的类型
     @GetMapping("/gaokaoQuestion")
     @ResponseBody
-    public String gaokaoQuestion(Model model, Map<String, Object> map) {
+    public Result gaokaoQuestion(Model model, Map<String, Object> map) {
         List<GaoKaoQuestion> questionType = gaoKaoQuestionMapper.findQuestionType();
 //        model.addAttribute("questionType",questionType);
         List<GaoKaoQuestion> allQuestions = gaoKaoQuestionMapper.findAllQuestions();
         map.put("questionType", questionType);
         map.put("allQuestions", allQuestions);
-        return JSONArray.toJSONString(map);
-//        model.addAttribute("allquestion",allQuestions);
 
+//        return ResultUtil.success(JSON.toJSONString(map));
+        return ResultUtil.success(map);
+
+//        return JSONArray.toJSONString(map);  //测试封装返回值
+
+
+//        model.addAttribute("allquestion",allQuestions);
 
 //        PaginationDTO questionList = gaoKaoQuestionService.listQuestions(page, size);
 //        model.addAttribute("questionList",questionList);
 
-//        return "gaokaoQuestion";
     }
 
     //根据问题id查看问题详细内容
     @GetMapping("/questionDetail/{id}")
-    public GaoKaoQuestion questionDetail(@PathVariable("id") Integer id, Model model) {
+    public Result questionDetail(@PathVariable("id") Integer id, Model model) {
         GaoKaoQuestion questionById = gaoKaoQuestionMapper.findQuestionById(id);
 //        model.addAttribute("questionById", questionById);
-        return questionById;
+//        return questionById;
+        if (questionById == null) {
+            return ResultUtil.error(ResultEnum.SYS_ERROR);
+        }
+        return ResultUtil.success(questionById);
     }
 }

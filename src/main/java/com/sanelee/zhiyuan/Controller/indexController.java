@@ -1,20 +1,21 @@
 package com.sanelee.zhiyuan.Controller;
 
-import com.alibaba.fastjson.JSON;
+import com.sanelee.zhiyuan.Enums.ResultEnum;
 import com.sanelee.zhiyuan.Mapper.UserExtMapper;
 import com.sanelee.zhiyuan.Mapper.UserMapper;
+import com.sanelee.zhiyuan.Model.Result;
 import com.sanelee.zhiyuan.Model.User;
 import com.sanelee.zhiyuan.Model.UserExample;
 import com.sanelee.zhiyuan.Service.ProfessionService;
 import com.sanelee.zhiyuan.Util.MD5Util;
 import com.sanelee.zhiyuan.Util.PhoneCode;
+import com.sanelee.zhiyuan.Util.ResultUtil;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -41,11 +42,17 @@ public class indexController {
 
     @GetMapping("/")
     @ResponseBody
-    public User index(HttpServletRequest request) {
+    public Result index(HttpServletRequest request) {
 
         String token = request.getParameter("token");
         User user = userExtMapper.findByToken(token);
-        return user;
+        if (user == null){
+            return (ResultUtil.error(ResultEnum.USER_NOTFOUND));
+        }else{
+            return ResultUtil.success(user);
+        }
+//        return user;
+
 //        Cookie[] cookies = request.getCookies();
 //        for (Cookie cookie : cookies) {
 //            if ("token".equals(cookie.getName())) {
@@ -59,34 +66,11 @@ public class indexController {
 //        return "index";
     }
 
-    //注册页面
-    @GetMapping("/register")
-    public String register() {
-        return "register";
-    }
-
-    //登录页面
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-
-    //手机登录页面
-    @GetMapping("/sendcode")
-    public String sendcode() {
-        return "sendcode";
-    }
-
-    //验证码页面
-    @GetMapping("/phonelogin")
-    public String phonelogin() {
-        return "phonelogin";
-    }
 
     //注册方法
     @RequestMapping("/addregister")
     @ResponseBody
-    public String register(HttpServletRequest request, Map<String, Object> map, Model model) {
+    public Result register(HttpServletRequest request, Map<String, Object> map, Model model) {
         String username = request.getParameter("username");
         String userPhone = request.getParameter("userPhone");
         String userArea = request.getParameter("userArea");
@@ -96,10 +80,12 @@ public class indexController {
 
         if (userArea.equals("暂无")) {
             map.put("msg", "请选择考生所在省份!");
-            return "请选择考生所在省份!";
+            return ResultUtil.success(map);
+//            return "请选择考生所在省份!";
         } else if (userSort.equals("暂无")) {
             map.put("msg", "请选择考生文理科!");
-            return "请选择考生文理科";
+            return ResultUtil.success(map);
+//            return "请选择考生文理科";
         }
         UserExample userExample1 = new UserExample();
         UserExample userExample2 = new UserExample();
@@ -121,26 +107,30 @@ public class indexController {
             System.out.println(username);
             System.out.println(userPhone);
             map.put("msg", "注册成功,请登录！");
-            return "login";
+            return ResultUtil.success(map);
+//            return "login";
         } else if (users1.size() != 0) {
             map.put("msg", "该用户名已存在！");
-            return "该用户名已存在！";
+            return ResultUtil.error(ResultEnum.USERNAME_EXISTED);
+//            return "该用户名已存在！";
         } else if (users2.size() != 0) {
             map.put("msg", "该手机号已经注册！");
-            return "该手机号已经注册！";
+            return ResultUtil.error(ResultEnum.PHONE_REGISTED);
+//            return "该手机号已经注册！";
         } else {
             map.put("msg", "密码不一致或用户名已存在！");
-            return "密码不一致或用户名已存在！";
+            return ResultUtil.error(ResultEnum.PASSWORD_NOTSAME);
+//            return "密码不一致或用户名已存在！";
         }
     }
 
     //登陆方法
     @RequestMapping("/addlogin")
     @ResponseBody
-    public User addlogin(HttpServletRequest request,
-                         HttpServletResponse response,
-                         Map<String, Object> map,
-                         Model model) {
+    public Result addlogin(HttpServletRequest request,
+                           HttpServletResponse response,
+                           Map<String, Object> map,
+                           Model model) {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String pwd = MD5Util.string2MD5(password);
@@ -148,7 +138,8 @@ public class indexController {
 
 
         User user = userExtMapper.loginquery(username, pwd);
-        return user;
+        return ResultUtil.success(user);
+//        return user;
 
 //        if (user != null) {
 //            String token = UUID.randomUUID().toString();
@@ -173,19 +164,21 @@ public class indexController {
 
     @RequestMapping("/updateUser")
     @ResponseBody
-    public String updateUser(@RequestBody User user) {
+    public Result updateUser(@RequestBody User user) {
 
         userExtMapper.updateUser(user);
-        return "success";
+        return ResultUtil.success("success");
+//        return "success";
     }
 
     //手机号登录
     @RequestMapping("/sendcode")
     @ResponseBody
-    public User sendcode(HttpServletRequest request, Map<String, Object> map) {
+    public Result sendcode(HttpServletRequest request, Map<String, Object> map) {
         String phone = request.getParameter("phonenumber");
         User user = userExtMapper.selectByPhone(phone);
-        return user;
+        return ResultUtil.success(user);
+//        return user;
 //        if (user != null) {
 //            HttpSession session = request.getSession();
 //            String code = PhoneCode.vcode();
@@ -209,19 +202,21 @@ public class indexController {
     //获取验证码
     @RequestMapping("/getMessage")
     @ResponseBody
-    public String getMessage(@RequestParam(name = "phone") String phone, Map<String, String> map) {
+    public Result getMessage(@RequestParam(name = "phone") String phone, Map<String, String> map) {
         String code = PhoneCode.vcode();
         UserInfo userInfo = new UserInfo();
         userInfo.setPhone(phone);
         userInfo.setCode(code);
         String sms = PhoneCode.getPhonemsg(phone, code);
-        if (sms.equals("-1")) {
+        if (sms.equals("-1")||sms.equals("由于系统维护，暂时无法注册！！！")) {
             map.put("sms", "-1");
-            return JSON.toJSONString(map);
+            return ResultUtil.error(ResultEnum.MESSAGE_ERROR);
+//            return JSON.toJSONString(map);
         } else {
             map.put("sms", "1");
             map.put("code", code);
-            return JSON.toJSONString(map);
+            return ResultUtil.success(map);
+//            return JSON.toJSONString(map);
         }
 //        session.setAttribute("userInfo", userInfo);
 //        return "phonelogin";
@@ -230,10 +225,10 @@ public class indexController {
     //验证用户输入的验证码
     @RequestMapping("/phonelogin")
     @ResponseBody
-    public User phonelogin(HttpServletRequest request,
-                           HttpServletResponse response,
-                           Map<String, Object> map,
-                           @RequestParam("phone") String phone) {
+    public Result phonelogin(HttpServletRequest request,
+                             HttpServletResponse response,
+                             Map<String, Object> map,
+                             @RequestParam("phone") String phone) {
 //        HttpSession session = request.getSession();
 //        String code = request.getParameter("code");
 //        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
@@ -243,19 +238,15 @@ public class indexController {
 //        } else {
 
         User dbuser = userExtMapper.selectByPhone(phone);
-        return dbuser;
-//            session.setAttribute("loginUser", user);
-//            map.put("msg", "登陆成功");
-//            return "redirect:/";
+        if (dbuser==null){
+            return ResultUtil.error(ResultEnum.USER_NOTFOUND);
+        }
+        return ResultUtil.success(dbuser);
+//        return dbuser;
+
 //        }
     }
 
 
-    //退出登录
-    @RequestMapping("/logout")
-    public String logout(HttpServletRequest request) {
-        request.getSession().removeAttribute("loginUser");
-        return "redirect:/";
-    }
 }
 

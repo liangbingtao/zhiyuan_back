@@ -3,7 +3,9 @@ package com.sanelee.zhiyuan.Controller;
 import com.sanelee.zhiyuan.DTO.PaginationDTO;
 import com.sanelee.zhiyuan.Mapper.GaoKaoQuestionMapper;
 import com.sanelee.zhiyuan.Model.GaoKaoQuestion;
+import com.sanelee.zhiyuan.Model.Result;
 import com.sanelee.zhiyuan.Service.ProfessionService;
+import com.sanelee.zhiyuan.Util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,9 +26,9 @@ public class ProVideoController {
 
     @GetMapping("/")
     @ResponseBody
-    public PaginationDTO getVideoList(Model model,
-                                      @RequestParam(value = "page", defaultValue = "1") Integer page,
-                                      @RequestParam(value = "size", defaultValue = "9") Integer size) {
+    public Result getVideoList(Model model,
+                               @RequestParam(value = "page", defaultValue = "1") Integer page,
+                               @RequestParam(value = "size", defaultValue = "9") Integer size) {
 
         PaginationDTO videos = professionService.listProVideo(page, size);
 //        model.addAttribute("videos",videos);
@@ -35,6 +37,7 @@ public class ProVideoController {
 //        model.addAttribute("gaokaoQuestions", questions);
         videos.setGaoKaoQuestionList(questions);
 //        return "index";
-        return videos;
+        return ResultUtil.success(videos);
+//        return videos;
     }
 }

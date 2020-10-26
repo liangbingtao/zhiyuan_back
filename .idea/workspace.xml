@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="55cd82e2-43dc-44f9-b57a-c0af6ad8341d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Enums/ResultEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Model/Result.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Util/ResultUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Controller/GaoKaoQuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Controller/GaoKaoQuestionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Controller/HighSearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Controller/HighSearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Controller/ProVideoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Controller/ProVideoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Controller/ProfessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Controller/ProfessionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Controller/ProfessionHomepageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Controller/ProfessionHomepageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Controller/SchoolController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Controller/SchoolController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Controller/SchoolHomepageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Controller/SchoolHomepageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Controller/SimulationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Controller/SimulationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Controller/indexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Controller/indexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Enum" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Users\Administrator.PC-20200208MOTP\.m2\wrapper\dists\apache-maven-3.6.3-bin\1iopthnavndlasol9gbrbg6bf2\apache-maven-3.6.3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1fymBwzD1y6GBdeG3lzx4wBdcll" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../zhiyuan_back 2" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.sanelee.zhiyuan.Exception" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\code\zhiyuan_back\src\main\resources\templates" />
+      <recent name="E:\code\zhiyuan_back\src\main\java\com\sanelee\zhiyuan" />
+      <recent name="E:\code\zhiyuan_back\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ZhiyuanApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="zhiyuan_back" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.sanelee.zhiyuan.ZhiyuanApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="55cd82e2-43dc-44f9-b57a-c0af6ad8341d" name="Default Changelist" comment="" />
+      <created>1597198576190</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1597198576190</updated>
+      <workItem from="1597198579359" duration="1065000" />
+      <workItem from="1597216172142" duration="20000" />
+      <workItem from="1597476681404" duration="2637000" />
+      <workItem from="1597800137735" duration="2964000" />
+      <workItem from="1597978722889" duration="22000" />
+      <workItem from="1598520527275" duration="3068000" />
+      <workItem from="1598523640032" duration="20000" />
+      <workItem from="1598523681993" duration="16000" />
+      <workItem from="1598523777813" duration="833000" />
+      <workItem from="1598583385713" duration="9781000" />
+      <workItem from="1598790627029" duration="3024000" />
+      <workItem from="1599011965648" duration="1112000" />
+      <workItem from="1599115759622" duration="2447000" />
+      <workItem from="1599145307461" duration="47000" />
+      <workItem from="1599810419542" duration="1546000" />
+      <workItem from="1599899894833" duration="36000" />
+      <workItem from="1599901442303" duration="2121000" />
+      <workItem from="1600074827302" duration="400000" />
+      <workItem from="1600126490570" duration="568000" />
+      <workItem from="1600150960617" duration="5780000" />
+      <workItem from="1600157129829" duration="12169000" />
+      <workItem from="1600247048263" duration="73000" />
+      <workItem from="1600256510292" duration="3573000" />
+      <workItem from="1600485089788" duration="2123000" />
+      <workItem from="1600504206857" duration="112000" />
+      <workItem from="1602059617445" duration="2124000" />
+      <workItem from="1602483161650" duration="62000" />
+      <workItem from="1603711680129" duration="306000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1952" y="217" key="#Inspections" timestamp="1600153973018">
+      <screen x="1366" y="0" width="1920" height="1080" />
+    </state>
+    <state x="1952" y="217" key="#Inspections/0.0.1366.728/1366.0.1920.1080@1366.0.1920.1080" timestamp="1600153973018" />
+    <state x="393" y="43" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600485683904">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="393" y="43" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728/1366.0.1920.1080@0.0.1366.728" timestamp="1600485683904" />
+    <state x="1918" y="197" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728/1366.0.1920.1080@1366.0.1920.1080" timestamp="1597198814570" />
+    <state x="2131" y="245" key="#com.intellij.ide.util.MemberChooser" timestamp="1600154874950">
+      <screen x="1366" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2131" y="245" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/1366.0.1920.1080@1366.0.1920.1080" timestamp="1600154874950" />
+    <state x="2015" y="175" key="FileChooserDialogImpl" timestamp="1600500336044">
+      <screen x="1366" y="0" width="1920" height="1080" />
+    </state>
+    <state x="462" y="118" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1920.1080@0.0.1366.728" timestamp="1597478045109" />
+    <state x="2015" y="175" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1920.1080@1366.0.1920.1080" timestamp="1600500336044" />
+    <state x="462" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1598604325837" />
+    <state width="1322" height="205" key="GridCell.Tab.0.bottom" timestamp="1600268497063">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="205" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.0.1920.1080@0.0.1366.728" timestamp="1600268497063" />
+    <state width="1876" height="360" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.0.1920.1080@1366.0.1920.1080" timestamp="1600162916286" />
+    <state width="1322" height="290" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1599015268873" />
+    <state width="1322" height="205" key="GridCell.Tab.0.center" timestamp="1600268497062">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="205" key="GridCell.Tab.0.center/0.0.1366.728/1366.0.1920.1080@0.0.1366.728" timestamp="1600268497062" />
+    <state width="1876" height="360" key="GridCell.Tab.0.center/0.0.1366.728/1366.0.1920.1080@1366.0.1920.1080" timestamp="1600162916285" />
+    <state width="1322" height="290" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1599015268873" />
+    <state width="1322" height="205" key="GridCell.Tab.0.left" timestamp="1600268497062">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="205" key="GridCell.Tab.0.left/0.0.1366.728/1366.0.1920.1080@0.0.1366.728" timestamp="1600268497062" />
+    <state width="1876" height="360" key="GridCell.Tab.0.left/0.0.1366.728/1366.0.1920.1080@1366.0.1920.1080" timestamp="1600162916285" />
+    <state width="1322" height="290" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1599015268872" />
+    <state width="1322" height="205" key="GridCell.Tab.0.right" timestamp="1600268497062">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="205" key="GridCell.Tab.0.right/0.0.1366.728/1366.0.1920.1080@0.0.1366.728" timestamp="1600268497062" />
+    <state width="1876" height="360" key="GridCell.Tab.0.right/0.0.1366.728/1366.0.1920.1080@1366.0.1920.1080" timestamp="1600162916285" />
+    <state width="1322" height="290" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1599015268873" />
+    <state width="1322" height="205" key="GridCell.Tab.1.bottom" timestamp="1600268497063">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="205" key="GridCell.Tab.1.bottom/0.0.1366.728/1366.0.1920.1080@0.0.1366.728" timestamp="1600268497063" />
+    <state width="1876" height="360" key="GridCell.Tab.1.bottom/0.0.1366.728/1366.0.1920.1080@1366.0.1920.1080" timestamp="1600162916286" />
+    <state width="1322" height="290" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1599015268873" />
+    <state width="1322" height="205" key="GridCell.Tab.1.center" timestamp="1600268497063">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="205" key="GridCell.Tab.1.center/0.0.1366.728/1366.0.1920.1080@0.0.1366.728" timestamp="1600268497063" />
+    <state width="1876" height="360" key="GridCell.Tab.1.center/0.0.1366.728/1366.0.1920.1080@1366.0.1920.1080" timestamp="1600162916286" />
+    <state width="1322" height="290" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1599015268873" />
+    <state width="1322" height="205" key="GridCell.Tab.1.left" timestamp="1600268497063">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="205" key="GridCell.Tab.1.left/0.0.1366.728/1366.0.1920.1080@0.0.1366.728" timestamp="1600268497063" />
+    <state width="1876" height="360" key="GridCell.Tab.1.left/0.0.1366.728/1366.0.1920.1080@1366.0.1920.1080" timestamp="1600162916286" />
+    <state width="1322" height="290" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1599015268873" />
+    <state width="1322" height="205" key="GridCell.Tab.1.right" timestamp="1600268497063">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="205" key="GridCell.Tab.1.right/0.0.1366.728/1366.0.1920.1080@0.0.1366.728" timestamp="1600268497063" />
+    <state width="1876" height="360" key="GridCell.Tab.1.right/0.0.1366.728/1366.0.1920.1080@1366.0.1920.1080" timestamp="1600162916286" />
+    <state width="1322" height="290" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1599015268873" />
+    <state width="1876" height="358" key="GridCell.Tab.2.bottom" timestamp="1600175367502">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1876" height="358" key="GridCell.Tab.2.bottom/0.0.1366.728/1366.0.1920.1080@0.0.1366.728" timestamp="1600175367502" />
+    <state width="1876" height="358" key="GridCell.Tab.2.bottom/0.0.1366.728/1366.0.1920.1080@1366.0.1920.1080" timestamp="1600160287217" />
+    <state width="1876" height="358" key="GridCell.Tab.2.center" timestamp="1600175367501">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1876" height="358" key="GridCell.Tab.2.center/0.0.1366.728/1366.0.1920.1080@0.0.1366.728" timestamp="1600175367501" />
+    <state width="1876" height="358" key="GridCell.Tab.2.center/0.0.1366.728/1366.0.1920.1080@1366.0.1920.1080" timestamp="1600160287216" />
+    <state width="1876" height="358" key="GridCell.Tab.2.left" timestamp="1600175367501">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1876" height="358" key="GridCell.Tab.2.left/0.0.1366.728/1366.0.1920.1080@0.0.1366.728" timestamp="1600175367501" />
+    <state width="1876" height="358" key="GridCell.Tab.2.left/0.0.1366.728/1366.0.1920.1080@1366.0.1920.1080" timestamp="1600160287216" />
+    <state width="1876" height="358" key="GridCell.Tab.2.right" timestamp="1600175367501">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1876" height="358" key="GridCell.Tab.2.right/0.0.1366.728/1366.0.1920.1080@0.0.1366.728" timestamp="1600175367501" />
+    <state width="1876" height="358" key="GridCell.Tab.2.right/0.0.1366.728/1366.0.1920.1080@1366.0.1920.1080" timestamp="1600160287216" />
+    <state width="219" height="457" key="HiddenNamespacesPopup" timestamp="1600485717323">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="219" height="457" key="HiddenNamespacesPopup/0.0.1366.728/1366.0.1920.1080@0.0.1366.728" timestamp="1600485717323" />
+    <state x="1827" y="171" key="SettingsEditor" timestamp="1600162395118">
+      <screen x="1366" y="0" width="1920" height="1080" />
+    </state>
+    <state x="1827" y="171" key="SettingsEditor/0.0.1366.728/1366.0.1920.1080@1366.0.1920.1080" timestamp="1600162395118" />
+    <state x="65" y="24" key="new project wizard" timestamp="1597478047091">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="65" y="24" key="new project wizard/0.0.1366.728/1366.0.1920.1080@0.0.1366.728" timestamp="1597478047091" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1600485284656">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/1366.0.1920.1080@0.0.1366.728" timestamp="1600485284656" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Controller/indexController.java</url>
+          <line>209</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Controller/indexController.java</url>
+          <line>208</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Controller/indexController.java</url>
+          <line>207</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Controller/indexController.java</url>
+          <line>206</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Controller/indexController.java</url>
+          <line>205</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/sanelee/zhiyuan/Controller/indexController.java</url>
+          <line>210</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

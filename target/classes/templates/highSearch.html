@@ -1,0 +1,225 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+<head>
+    <title>孙教授讲专业</title>
+    <meta name="viewport" content="text/html; charset=UTF-8;"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link href="/css/bootstrap-select.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/css/zhiyuan.css">
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/bootstrap-select.min.js"></script>
+    <script src="/js/i18n/defaults-zh_CN.min.js"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            window.prettyPrint() && prettyPrint();
+        });
+        // 插件实例
+        $(document).ready(function () {
+            $("#typeId").multiselect();
+            // 点击事件获取所有选中option的value值
+            $("#btn").click(function () {
+                var selectValueStr = [];
+                $("#typeId option:selected").each(function () {
+                    selectValueStr.push($(this).val());
+                })
+                console.log(selectValueStr)
+            })
+        });
+    </script>
+</head>
+<body>
+<div style="height: 100px;background-color: white">
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8  col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
+        <div style="display: inline-block;margin-top: 20px">
+            <a href="/">
+                <img src="/images/logo2.png" height="80" width="358"/>
+            </a>
+        </div>
+        <div th:if="${session.loginUser != null}"
+             style="text-align: center; width: 80px;height: 40px;display: inline-block;border: 1px solid #ddd;padding: 0px 9px;">
+            <h5 th:text="${session.loginUser.userarea}" style="display: inline-block"></h5>
+            <h5 class="glyphicon glyphicon-map-marker" style="color: #2e6da4; display: inline-block"></h5>
+
+        </div>
+    </div>
+</div>
+<div>
+    <div class="tou">
+        <div class="mynav">
+            <ul>
+                <li><a href="/">首页</a>
+                </li>
+                <li><a>填志愿</a>
+                    <ul id="one" >
+                        <!-- 生成绝对定位的元素，方便修改下拉框的位置 -->
+                        <li><a href="/school">找大学</a></li>
+                        <li><a href="/profession">查专业</a></li>
+                        <li><a href="/scoreline">批次线</a></li>
+                        <li><a href="/simulation">填报推荐</a></li>
+<!--                        <li><a href="/userBasicInformation">一键填报</a></li>-->
+
+                    </ul>
+                </li>
+                <li><a href="#">视频课堂</a>
+                    <ul id="two" >
+                        <!-- 生成绝对定位的元素，方便修改下拉框的位置 -->
+                        <li><a href="#">高校课堂</a></li>
+                        <li><a href="#">专业课堂</a></li>
+
+                    </ul>
+                </li>
+                <li><a href="/highSearch">高级搜索</a>
+                </li>
+                <li th:if="${session.loginUser != null}" >
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        <span  th:text="${session.loginUser.username}+'&nbsp;'+'同学'"></span>
+                    </a>
+                    <ul id="three" >
+                        <li><a href="/front/logout">退出登录</a></li>
+                    </ul>
+                </li>
+                <li th:if="${session.loginUser == null}" >
+                    <a href="/front/login">登录</a>
+                </li>
+            </ul>
+        </div>
+        <div class="myitem col-lg-8 col-md-8 col-sm-8 col-xs-8  col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2" style="background-color: #e2e2e2;margin-bottom: 20px;-webkit-border-radius: 10px;">
+            <div class="row" style="margin-left: 200px">
+                <div class=" score-icon ">
+                    <a class="glyphicon glyphicon-home" href="/school" style="text-decoration: none;"></a>
+                    <h4>找学校</h4>
+                </div>
+                <div class="score-icon">
+                    <a class="glyphicon glyphicon-th-large" href="/profession" style="text-decoration: none;" ></a>
+                    <h4>查专业</h4>
+                </div>
+                <div class=" score-icon">
+                    <a class="glyphicon glyphicon-th-list" href="/scoreline" style="text-decoration: none;"></a>
+                    <h4>批次线</h4>
+                </div>
+<!--                <div class=" score-icon">-->
+<!--                    <a class="glyphicon glyphicon-list-alt" href="#" style="text-decoration: none;"></a>-->
+<!--                    <h4>专业测评</h4>-->
+<!--                </div>-->
+                <div class=" score-icon">
+                    <a class="glyphicon glyphicon-edit" href="/simulation" style="text-decoration: none;"></a>
+                    <h4>填报推荐</h4>
+                </div>
+<!--                <div class="score-icon">-->
+<!--                    <a class="glyphicon glyphicon-pencil" href="/userBasicInformation" style="text-decoration: none;"></a>-->
+<!--                    <h4>一键填报</h4>-->
+<!--                </div>-->
+                <div class="score-icon">
+                    <a class="glyphicon glyphicon-film" href="" style="text-decoration: none;"></a>
+                    <h4>视频讲解</h4>
+                </div>
+<!--                <div class=" score-icon">-->
+<!--                    <a class="glyphicon glyphicon-user"  href="#" style="text-decoration: none;"></a>-->
+<!--                    <h4>志愿专家</h4>-->
+<!--                </div>-->
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6  col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-3">
+        <div style="margin-top: 30px;margin-left: 5%;">
+            <form action="/search" method="post">
+                <select class="selectpicker" multiple data-live-search="true" name="area" required>
+                    <option value="无" selected style="display: none;">--请选择学校所在区域--</option>
+                    <optgroup label="华北地区">
+                        <option value="北京">北京</option>
+                        <option value="内蒙古">内蒙古</option>
+                        <option value="河北">河北</option>
+                        <option value="天津">天津</option>
+                        <option value="山西">山西</option>
+                    </optgroup>
+                    <optgroup label="东北地区">
+                        <option value="黑龙江">黑龙江</option>
+                        <option value="吉林">吉林</option>
+                        <option value="辽宁">辽宁</option>
+                    </optgroup>
+                    <optgroup label="华东地区">
+                        <option value="江西">江西</option>
+                        <option value="山东">山东</option>
+                        <option value="福建">福建</option>
+                        <option value="上海">上海</option>
+                        <option value="浙江">浙江</option>
+                        <option value="安徽">安徽</option>
+                        <option value="江苏">江苏</option>
+                    </optgroup>
+                    <optgroup label="华中地区">
+                        <option value="河南">河南</option>
+                        <option value="湖北">湖北</option>
+                        <option value="湖南">湖南</option>
+                    </optgroup>
+                    <optgroup label="华南地区">
+                        <option value="广东">广东</option>
+                        <option value="广西">广西</option>
+                        <option value="海南">海南</option>
+                    </optgroup>
+                    <optgroup label="西南地区">
+                        <option value="重庆">重庆</option>
+                        <option value="云南">云南</option>
+                        <option value="贵州">贵州</option>
+                        <option value="四川">四川</option>
+                    </optgroup>
+                    <optgroup label="西北地区">
+                        <option value="陕西">陕西</option>
+                        <option value="甘肃">甘肃</option>
+                        <option value="宁夏">宁夏</option>
+                        <option value="新疆">新疆</option>
+                        <option value="青海">青海</option>
+                        <option value="西藏">西藏</option>
+                    </optgroup>
+                    <optgroup label="港澳台">
+                    <option value="香港">香港</option>
+                    <option value="澳门">澳门</option>
+                    <option value="台湾">台湾</option>
+                    </optgroup>
+                </select>
+                <select class="selectpicker" name="type" required>
+                    <option value="-1" selected style="display: none;">--请选择学校等级--</option>
+                    <option value="985">985</option>
+                    <option value="211">211</option>
+                    <option value="1">双一流</option>
+                    <option value="2">本科一批</option>
+                    <option value="3">本科二批</option>
+                </select>
+                <select class="selectpicker" data-live-search="true" name="profession" required>
+                    <option value="null" selected style="display: none;">--请选择查询专业--</option>
+                    <option th:each="profession:${professionList}" th:text="${profession.proname}"></option>
+                </select>
+                <button type="submit" class="btn btn-primary" >搜索开设该专业的高校</button>
+            </form>
+        </div>
+        <div style="text-align:center;vertical-align:middle;width: 100%">
+            <h4 th:text="${msg}" style="color: red"></h4>
+        </div>
+        <div class="schoolList">
+            <div class="container-fluid">
+                <ul class="list-group" id="dataSet" th:each="school:${schoolList}">
+                    <li class="media" style="height: 100px">
+                        <a th:href="@{'/schoolHomepage/'+${school.scid}}" style="text-decoration: none;">
+                            <div class="media-body">
+                                <h4 class="media-heading" style="color: #333333" th:text="${school.name}"></h4>
+                                <h5 style="color: #080416" th:text="${school.spname}+'专业'+'&nbsp;'+'&brvbar;'+'&brvbar;'+'&nbsp;'+${school.localBatchName}+'&nbsp;'+'&brvbar;'+'&brvbar;'+'&nbsp;'+'最低分'+${school.min}+'&nbsp;'+'&brvbar;'+'&brvbar;'+'&nbsp;'+'最低位次'+${school.minSection}"></h5>
+                            </div>
+                        </a>
+                        <ol class="schooltitle">
+                            <span class="label label-primary" th:if="${school.is985 == 985}">985</span>
+                            <span class="label label-primary" th:if="${school.is211 == 211}">211</span>
+                            <span class="label label-primary" th:if="${school.isdoublefirstclass == 1}">双一流</span>
+                        </ol>
+                    </li>
+                </ul>
+            </div>
+<!--            <div th:if="${schoolList == null}" style="margin-left: 35%">-->
+<!--                <h4>此地区暂无开设该专业的学校</h4>-->
+<!--            </div>-->
+        </div>
+    </div>
+</div>
+</body>
+</html>
